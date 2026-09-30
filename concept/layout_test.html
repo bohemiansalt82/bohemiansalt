@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-panel {
+            flex: 1;
+            background-color: #f0f0f0;
+            overflow: auto;
+        }
+
+        .right-panel {
+            width: 500px;
+            background-color: #e0e0e0;
+            overflow: auto;
+            resize: horizontal;
+            position: relative;
+        }
+
+        .resizer {
+            width: 4px;
+            height: 100%;
+            background-color: #999;
+            cursor: ew-resize;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            왼쪽 패널 내용
+        </div>
+        <div class="right-panel">
+            <div class="resizer" id="resizer"></div>
+            오른쪽 패널 내용
+        </div>
+    </div>
+
+    <script>
+        const resizer = document.getElementById('resizer');
+        const rightPanel = document.querySelector('.right-panel');
+
+        let isResizing = false;
+        let startX;
+        let startWidth;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            startX = e.clientX;
+            startWidth = rightPanel.offsetWidth;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            
+            const width = startWidth - (e.clientX - startX);
+            if (width > 200 && width < window.innerWidth - 200) {
+                rightPanel.style.width = `${width}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+        });
+    </script>
+</body>
+</html>

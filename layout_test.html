@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Split Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            font-size: 32px;
+        }
+        button, input {
+            font-size: 32px;
+        }
+
+        .container {
+            display: flex;
+            padding:32px;
+            min-height: 100vh;
+            width: 100%;
+            /* background-image: url('layout_test_bg.png'); */
+            background-size: cover;
+            background-position: top;
+        }
+
+        .left-panel {
+            width: 60%;
+            background-color: #f0f0f0;
+            border-radius: 32px;
+            overflow: auto;
+        }
+
+        .right-panel {
+            width: 40%;
+            
+            overflow: auto;
+            resize: horizontal;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resizer {
+            width: 4px;
+            height: 100%;
+            background-color: #999;
+            cursor: ew-resize;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+        /* 콤포넌트 */
+
+        .input-section {
+            padding: 40px 40px 0px 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            height:168px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 40px;
+            border-radius: 32px;
+        }
+
+        .input-group button {
+            height:168px;
+            width:168px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border-radius: 32px;
+        }
+
+        .grid-section {
+            padding: 20px;
+           
+        }
+
+        .data-grid {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 32px;
+            border:none;
+            background-color: #f0f0f0;
+        }
+
+        .data-grid th, .data-grid td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .data-grid th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            왼쪽 패널 내용
+        </div>
+        <div class="right-panel">
+            <div class="resizer" id="resizer"></div>
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="text" placeholder="입력 1">
+                    <input type="text" placeholder="입력 2">
+                    <button>확인</button>
+                </div>
+            </div>
+            <div class="grid-section">
+                <table class="data-grid">
+                    <thead>
+                        <tr>
+                            <th>컬럼 1</th>
+                            <th>컬럼 2</th>
+                            <th>컬럼 3</th>
+                            <th>컬럼 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>데이터 1-1</td>
+                            <td>데이터 1-2</td>
+                            <td>데이터 1-3</td>
+                            <td>데이터 1-4</td>
+                        </tr>
+                        <tr>
+                            <td>데이터 2-1</td>
+                            <td>데이터 2-2</td>
+                            <td>데이터 2-3</td>
+                            <td>데이터 2-4</td>
+                        </tr>
+                        <tr>
+                            <td>데이터 3-1</td>
+                            <td>데이터 3-2</td>
+                            <td>데이터 3-3</td>
+                            <td>데이터 3-4</td>
+                        </tr>
+                        <tr>
+                            <td>데이터 4-1</td>
+                            <td>데이터 4-2</td>
+                            <td>데이터 4-3</td>
+                            <td>데이터 4-4</td>
+                        </tr>
+                        <tr>
+                            <td>데이터 5-1</td>
+                            <td>데이터 5-2</td>
+                            <td>데이터 5-3</td>
+                            <td>데이터 5-4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let baseWidth, baseHeight; // 기준 해상도를 저장할 변수
+
+        const resizer = document.getElementById('resizer');
+        const leftPanel = document.querySelector('.left-panel');
+        const rightPanel = document.querySelector('.right-panel');
+        let isResizing = false;
+        
+        resizer.addEventListener('mousedown', initResize);
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', stopResize);
+        
+        function initResize(e) {
+            isResizing = true;
+            document.body.style.userSelect = 'none';
+        }
+        
+        function resize(e) {
+            if (!isResizing) return;
+            
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            const containerWidth = containerRect.width;
+            const mouseX = e.clientX - containerRect.left;
+            const newLeftWidth = (mouseX / containerWidth) * 100;
+            
+            if (newLeftWidth > 20 && newLeftWidth < 80) {
+                leftPanel.style.width = `${newLeftWidth}%`;
+                rightPanel.style.width = `${100 - newLeftWidth}%`;
+            }
+        }
+        
+        function stopResize() {
+            isResizing = false;
+            document.body.style.userSelect = '';
+        }
+
+        function initBaseDimensions() {
+            baseWidth = window.innerWidth;
+            baseHeight = window.innerHeight;
+        }
+
+        function adjustZoom() {
+            let scale;
+            if (window.innerWidth <= 2240) {
+                // 2240px를 기준으로 0.5 스케일에서 비례해서 줄어들도록 계산
+                scale = (window.innerWidth / 2240) * 0.6;
+            } else {
+                const scaleX = window.innerWidth / baseWidth;
+                const scaleY = window.innerHeight / baseHeight;
+                scale = Math.min(scaleX, scaleY);
+            }
+            
+            document.body.style.zoom = scale;
+            
+            // 컨테이너 크기 조정
+            const container = document.querySelector('.container');
+            container.style.width = `${window.innerWidth / scale}px`;
+            container.style.height = `${window.innerHeight / scale}px`;
+        }
+
+        // 페이지 로드 시 초기화
+        initBaseDimensions();
+        window.addEventListener('resize', adjustZoom);
+        adjustZoom(); // 초기 실행
+    </script>
+</body>
+</html>

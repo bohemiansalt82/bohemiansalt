@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+  
+  <title>Every moment of life was the decisive moment.</title>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  <link rel="stylesheet" href="css/style.css?434343434" />
+ 
+
+</head>
+<body class="demos">
+
+  
+  <nav id="site-nav">
+    <ul class="ci"><a href="index.html"></a>
+    </ul>
+      
+    <ul class="contact">
+      <li class="copy"></li>
+      <li class="mail"></li>
+      <li class="phone"></li>
+    </ul>
+    
+  </nav> 
+  <!-- #site-nav -->
+  
+<section id="content">
+<div class="header">
+	<ul>
+		<li class="close"><a href="javascript:history.back()"><img src="images/big_close.png"/></a></li>
+		<li class="title">Collaboration Concept 2024 01
+            <!-- <a class="link" href="https://xenoimpact.com/" target="_blank">Go to Official</a> -->
+        </li>
+	</ul>
+</div>
+
+<div id="container" >
+ 
+  <div class="box detail thumb_1400">
+    <img src="concept/hermes.png"/>
+    <img src="concept/supreme.png" >
+    <img src="concept/UGG2.png" >
+  </div>
+  
+
+  
+
+
+</div> <!-- #container -->
+
+
+
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="jquery.masonry.min.js"></script>
+<script>
+  $(function(){
+    
+    $('#container').masonry({
+      itemSelector: '.box',
+	  columnWidth: 0,
+      isAnimated:true
+      
+    });
+    
+  });
+
+
+   $(".box").hover(
+	function () {
+		$(".description").hide("fast");
+		$(this).children(".description").show("fade");
+    },
+	function(){
+		$(this).children(".description").hide("fade");
+	});
+</script>
+
+
+    
+</section> 
+
+</body>
+</html>

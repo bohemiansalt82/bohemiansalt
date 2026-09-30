@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+  
+  <title>Every moment of life was the decisive moment.</title>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  <link rel="stylesheet" href="css/style.css?434343434" />
+ 
+
+</head>
+<body class="demos" style="padding:0px;">
+
+
+
+<div id="container" >
+ 
+  <div class="box col3">
+	
+    <a href="gearlounge3.html" ><img src="design/gearlounge/type_a_main_0.8_content.png"/></a>
+ 
+  </div>
+
+  
+
+
+</div> <!-- #container -->
+
+
+
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="jquery.masonry.min.js"></script>
+<script>
+  $(function(){
+    
+    $('#container').masonry({
+      itemSelector: '.box',
+	  columnWidth: 0,
+      isAnimated:true
+      
+    });
+    
+  });
+
+
+   $(".box").hover(
+	function () {
+		$(".description").hide("fast");
+		$(this).children(".description").show("fade");
+    },
+	function(){
+		$(this).children(".description").hide("fade");
+	});
+</script>
+
+
+    
+</section> 
+
+</body>
+</html>

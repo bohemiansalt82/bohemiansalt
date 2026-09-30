@@ -1,0 +1,17 @@
+.DS_Store
+
+# GitHub 100MB 파일 크기 제한 초과 파일
+portfolio.key
+portfolio_V2.key
+concept/chopstee_V2.psd
+
+# 용량 큰 PDF/PSD (10MB 이상) 제외
+portfolio_daesoo.pdf
+portfolio_V2_2025.pdf
+portfolio_V2_0620.pdf
+Parkjoohyun_Portfolio_v2.1_220327.pdf
+concept/sushi.psd
+concept/chopstee.psd
+concept/malbon.psd
+concept/supreme.psd
+concept/wooyoungwoo.psd

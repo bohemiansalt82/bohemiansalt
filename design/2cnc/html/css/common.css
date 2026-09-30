@@ -1,0 +1,255 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Kanit:100,400&display=swap');
+
+/* reset */
+* {
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+html,
+body{height:100%;}
+body {font-family:'Noto Sans KR','Kanit','맑은 고딕','Malgun Gothic',MalgunGothic,Gulim,'굴림',Helvetica,AppleSDGothicNeo,sans-serif;line-height:1.367;color:#000;font-weight:400;font-size:15px;background-color:#fff;}
+body:before{position:fixed;left:0;top:0;width:100%;height:0;content:'';}/* fix webkit bug(scroll event delay) */
+li{list-style:none;}
+a{color:inherit;text-decoration:none;outline-offset:-1px;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+img{border:0;vertical-align:middle;}
+::-moz-selection{color:#fff;background-color:#0047e8}
+::selection{color:#fff;background-color:#0047e8}
+
+
+.wrap {
+    top:0px;
+    bottom:0px;
+    border-right:1px solid #b2b2b2;
+    border-left:1px solid #b2b2b2;
+    overflow: hidden;
+    background:#fff;
+}
+
+.nav {
+   
+    display: block;
+    width: 266px;
+    bottom:0px;
+    top:0px;
+    position: fixed;
+    transition: 0.1s;
+    z-index: 900;
+}
+
+.nav .menu{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:470px;
+    background: url(../images/nav.png) no-repeat;
+}
+
+.nav .account{
+    position: absolute;
+    left:0px;
+    bottom:0px;
+    width:100%;
+    height:242px;
+    background: url(../images/account.png) no-repeat;
+}
+
+.partner {
+    display: block;
+    width: 116px;
+    height:269px;
+    top:210px;
+    right:80px;
+    position: fixed;
+    background: url(../images/partners.png) no-repeat;
+    transition: 0.1s ease-out;
+}
+
+.nav img{
+   margin:74px 0px 50px 40px;
+}
+
+header {
+    display: block;
+    height:420px;
+    position: relative;
+    transition: 0.1s;
+    z-index: 900;
+    background:#1d1d1d;
+    overflow: hidden;
+    transition: 1s ease;
+  
+}
+
+header .ad_img{
+    background: url(../images/ad_sample.png) no-repeat;
+    width:1289px;
+    height:1138px;
+    position: absolute;
+    left:0px;
+    top:-100px;
+    transition: 1s ease;
+}
+
+header .ad_img .heat{
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    position: absolute;
+    background: url(../images/heat.png) no-repeat 50% ;
+    transition: 1s ease;
+    opacity: 0;
+}
+
+header .count_num{
+    background: url(../images/count_num.png) no-repeat;
+    width:100%;
+    height:76px;
+    position: absolute;
+    left:60px;
+    bottom:50px;
+}
+
+header .toper {
+    background: url(../images/ad_header_mask.png) repeat-x;
+    width:100%;
+    height:263px;
+    position: absolute;
+    left:0px;
+    top:0px;
+}
+
+header .mask {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    transition-delay: 1.5s ;
+    transition-duration: 2s;
+    transition-timing-function: ease;
+}
+
+header .heatmap {
+    background: url(../images/heatmap.png) no-repeat #1d1d1d;
+    position: absolute;
+    left:1287px;
+    top:0px;
+    width:366px;
+    height:100%;
+}
+
+header .heatmap .open_heatmap{
+    background: url(../images/btn_open_heatmap.png) no-repeat;
+    position: absolute;
+    right:60px;
+    bottom:60px;
+    width:163px;
+    height:25px;
+    cursor: pointer;
+}  
+
+header .heatmap .open_heatmap.btn_switch{
+    background: url(../images/btn_close_heatmap.png) no-repeat;
+
+}    
+
+
+
+header .toper .ad_name{
+    background: url(../images/ad_header.png) no-repeat;
+    width:100%;
+    height:60px;
+    margin:60px 0px 0px 60px;
+
+}
+
+
+
+header.open {
+    height:1138px;
+    transition: 2s ease;
+}
+
+header.open .mask {
+    background: rgba(0, 0, 0, 0);
+    transition-delay: 2.5s ;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+
+header.open .ad_img {
+    top:0px;
+    transition: 2s ease;
+}
+
+header.open .ad_img .heat{
+    transition-delay: 3s ;
+    transition-duration: 3s;
+    transition-timing-function: ease;
+    opacity: 1;
+    
+}
+
+header.open .open_heatmap{
+    background: url(../images/btn_close_heatmap.png) no-repeat;
+
+}    
+
+
+
+
+.main {margin-left:266px; }
+
+
+
+
+
+
+/* .wrap.fixed #header{
+    background:#505050; 
+    height:90px; 
+    left:40px; 
+    right:40px; 
+    border-bottom:none;
+    transition: 0.1s ease-out;
+} */
+.wrap.fixed #header .logo{
+    background: url(../images/logo_black.png) no-repeat;
+    top:21px;
+    transition: 0.1s ease-out;
+}
+
+.wrap.fixed #header .search{
+    top:18px;
+    transition: 0.1s ease-out;
+}
+
+/* .wrap.fixed #header .toper{
+    background: url(../images/toper2.png) no-repeat;
+    top:18px;
+    transition: 0.1s ease-out;
+} */
+
+/* .wrap.fixed .nav {
+    top:90px;
+    transition: 0.1s ease-out;
+} */
+
+.wrap.fixed .partner {
+    transition: 0.1s ease-out;
+    top:130px;
+}
+
+.wrap.fixed .pop_search {
+    transition: 0.1s ease-out;
+    top:79px;
+}
+
+
+
+
